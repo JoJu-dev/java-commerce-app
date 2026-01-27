@@ -1,0 +1,63 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>com.figueroa.jugs</groupId>
+  <artifactId>Login</artifactId>
+  <version>0.0.1-SNAPSHOT</version>
+  
+  <packaging>war</packaging><!-- El war Permite el despliegue-->
+	<name>${project.artifactId}</name>
+   <properties>
+        <maven.compiler.source>21</maven.compiler.source>
+        <maven.compiler.target>21</maven.compiler.target>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <!--Projct reporting para que se genere el juego de carácteres en el proyecto-->
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+    </properties>
+	<!--Paso Uno. Instalamos jakarta al iniciar Proyecto-->
+	<dependencies>
+		<!-- Source:
+		https://mvnrepository.com/artifact/jakarta.platform/jakarta.jakartaee-api -->
+		 <dependency>
+            <groupId>jakarta.platform</groupId>
+            <artifactId>jakarta.jakartaee-api</artifactId>
+            <version>11.0.0</version>
+            <scope>provided</scope>
+        </dependency>
+	</dependencies>
+
+	<!-- Paso Dos: Agrgamos plugins -->
+	<!-- maven-compiler-plugin -->
+	<build>
+	<!--Agregando nombre del war-->
+	<finalName>ProyectoEE</finalName>
+		<plugins>
+			<plugin>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>3.10.1</version>
+			</plugin>
+			<plugin>
+			
+			<!-- Plugin apache Tomcat-->
+				<groupId>org.apache.tomcat.maven</groupId>
+				<artifactId>tomcat7-maven-plugin</artifactId>
+				<version>2.2</version>
+				<!-- Configuración del archivo Tomcat-->
+				<configuration>
+					<url>http://localhost:8080/manager/text</url>
+					<username>user</username>
+					<password>psw</password>
+				</configuration>
+			</plugin>
+			<!-- PARA COMPILAR EL Proyecto -->
+			<plugin>
+				<artifactId>maven-war-plugin</artifactId>
+				<version>3.3.2</version>
+				<configuration>
+					<failOnMissingWebXml>false</failOnMissingWebXml>
+				</configuration>
+			</plugin>
+		</plugins>
+
+
+	</build>
+</project>
