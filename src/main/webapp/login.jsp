@@ -1,3 +1,4 @@
+<%@ page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -30,11 +31,11 @@
 
 						<h3 class="text-center mb-4">Iniciar Sesión</h3>
 
-						<form action="LoginServlet" method="post">
+						<form action="loginServlet" method="post">
 
 							<div class="mb-3">
-								<label for="usuario" class="form-label">Usuario</label> <input
-									type="text" class="form-control" id="usuario" name="usuario"
+								<label for="user" class="form-label">Usuario</label> <input
+									type="text" class="form-control" id="user" name="user"
 									placeholder="Ingrese su usuario">
 							</div>
 
