@@ -48,5 +48,4 @@ public class LoginTest {
 		assertEquals(true,credenciales.acceso(USER, PASSWORD),"Prueba  debe admitir Credenciales");
 	}
 
-
 }
