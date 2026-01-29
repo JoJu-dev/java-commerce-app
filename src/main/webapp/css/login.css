@@ -1,11 +1,6 @@
-body {
-   /*
-* Created with https://www.css-gradient.com
-* Gradient link: https://www.css-gradient.com/?c1=56b1c7&c2=19bef4&gt=l&gd=dtl
-*/
-background: #56B1C7;
-background: linear-gradient(315deg, #56B1C7, #19BEF4);
-}
+ body {
+      background: linear-gradient(135deg, #f2f2f2, #d9d9d9);
+    }
 
 .card {
     border-radius: 10px;
