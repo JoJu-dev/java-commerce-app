@@ -5,8 +5,11 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
+
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.Optional;
 
 import code.figueroa.services.login.LoginServicesImpl;
 import code.figueroa.services.login.LoginSesvices;
@@ -21,8 +24,13 @@ public class loginServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
-		response.setContentType("text/html;Charset=UTF-8");
-
+		String nombreSession = null;
+		var session = request.getSession();
+		if(session != null) { 
+		 nombreSession = (String)session.getAttribute("usuario");
+		}
+		if((nombreSession != null) && (!nombreSession.isBlank())) {
+		response.setContentType("text/html;Charset=UTF-8");		
 		try (PrintWriter out = response.getWriter()) {
 
 			out.println("<!Doctype html>");
@@ -36,7 +44,9 @@ public class loginServlet extends HttpServlet {
 			out.println("</body>");
 			out.println("</html>");
 		}
-
+		}else {
+			getServletContext().getRequestDispatcher("/login.jsp").forward(request, response);// devuelve ruta absoluta
+		}
 		// response.getWriter().append("Served at: ").append(request.getContextPath());
 	}
 
@@ -50,10 +60,13 @@ public class loginServlet extends HttpServlet {
 		boolean login = credenciales.inicioSession(user, password);
 
 		if (login) {
+			HttpSession session = request.getSession();
+			session.setAttribute("usuario", user);
+
 			response.sendRedirect("loginServlet.html");
 		} else {
 			request.setAttribute("sessionIncorrecta", "Usuario o contraseña incorrectas, intente de nuevo");
-			request.getRequestDispatcher("login.jsp").forward(request, response);
+			request.getRequestDispatcher("/login.jsp").forward(request, response);// devuelve ruta relativa
 		}
 
 		doGet(request, response);
