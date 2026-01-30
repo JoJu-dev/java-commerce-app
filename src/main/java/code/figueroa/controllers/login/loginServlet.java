@@ -24,11 +24,9 @@ public class loginServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
-		String nombreSession = null;
-		var session = request.getSession();
-		if(session != null) { 
-		 nombreSession = (String)session.getAttribute("usuario");
-		}
+		LoginSesvices sessionServices = new LoginServicesImpl();
+		var nombreSession = sessionServices.getSessionUserName(request,"usuario");
+		
 		if((nombreSession != null) && (!nombreSession.isBlank())) {
 		response.setContentType("text/html;Charset=UTF-8");		
 		try (PrintWriter out = response.getWriter()) {
