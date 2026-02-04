@@ -9,7 +9,8 @@ import jakarta.servlet.http.HttpSession;
 
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.Optional;
+import java.util.HashMap;
+import java.util.Map;
 
 import code.figueroa.services.login.LoginServicesImpl;
 import code.figueroa.services.login.LoginSesvices;
@@ -39,6 +40,7 @@ public class loginServlet extends HttpServlet {
 			out.println("</head>");
 			out.println("<body>");
 			out.print("<h1>Bienvenidos<h1>");
+			out.print("<h1 ><a href='" + request.getContextPath() +"/logout'>Cerrar Session</a><h1>");
 			out.println("</body>");
 			out.println("</html>");
 		}
@@ -53,21 +55,30 @@ public class loginServlet extends HttpServlet {
 
 		var user = request.getParameter("user");
 		var password = request.getParameter("password");
+		
+		Map<String,String> errores = new HashMap<>();
+		
 
 		LoginSesvices credenciales = new LoginServicesImpl();
 		boolean login = credenciales.inicioSession(user, password);
 
-		if (login) {
+
+		if(login== false)errores.put("isFalse", "Crededenciales incorrectas, vuelva a intentarlo");
+		
+		if(errores.isEmpty()) {
 			HttpSession session = request.getSession();
 			session.setAttribute("usuario", user);
 
 			response.sendRedirect("loginServlet.html");
 		} else {
-			request.setAttribute("sessionIncorrecta", "Usuario o contraseña incorrectas, intente de nuevo");
+		
+			request.setAttribute("errores", errores);
 			request.getRequestDispatcher("/login.jsp").forward(request, response);// devuelve ruta relativa
 		}
 
 		doGet(request, response);
+		
+		
 	}
 
 }

@@ -1,21 +1,20 @@
 package code.figueroa.services.login;
 
-import java.util.Optional;
+
 
 import code.figueroa.models.login.Login;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
 
 public class LoginServicesImpl implements LoginSesvices {
-	private String USER = "prueba";
-	private String PASSWORD = "usuario";
+	private static final String USER = "prueba";
+	private static final String PASSWORD = "usuario";
 	
 	
 	
 	@Override
 	public boolean inicioSession(String user, String pass) {
 		var logeo = new Login(USER,PASSWORD);
-		System.out.println("Logeo " +logeo.acceso(user, pass));
 		return logeo.acceso(user, pass);
 	}
 
@@ -32,6 +31,18 @@ public class LoginServicesImpl implements LoginSesvices {
 		  sessionName = (String) session.getAttribute(idSession); 
 		}
 	     return sessionName;
+	}
+
+
+
+	@Override
+	public void outSession(HttpServletRequest req, String idSession) {
+	    
+		HttpSession session = req.getSession();
+		if(session != null) {
+			session.removeAttribute(idSession);
+		}
+		
 	}
 	
 	
