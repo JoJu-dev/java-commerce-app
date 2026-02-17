@@ -15,7 +15,7 @@ public class LoginServicesImpl implements LoginSesvices {
 	@Override
 	public boolean inicioSession(String user, String pass) {
 		var logeo = new Login(USER,PASSWORD);
-		return logeo.acceso(user, pass);
+		return logeo.acceso(user,pass);
 	}
 
 
