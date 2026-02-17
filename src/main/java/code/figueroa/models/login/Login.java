@@ -12,22 +12,26 @@ public class Login {
 	
 	
 	public String getUser() {
-		return user;
+		return user.replace(" ","");
 	}
 
 	public String getPassword() {
-		return password;
+		return password.replace(" ","");
 	}
 
 
 
 	public boolean acceso(String user, String password) {
 		
-		if(this.getUser().equals(user) && this.getPassword().equals(password)) {
+		if(this.getUser().equals(user.replace(" ", "")) && this.getPassword().equals(password.replace(" ", ""))) {
 			return true;
 		}		
 		
 		return false;
+	}
+	
+	public boolean equals(Object obj) {
+		return obj instanceof Login l && this.user == l.user && this.password == l.password; 
 	}
 
 }
