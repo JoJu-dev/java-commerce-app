@@ -10,7 +10,7 @@ import org.junit.jupiter.api.Test;
 
 public class LoginTest {
 	
-	private String USER = "prueba";
+	private String USER = "prueba ";
 	private String PASSWORD = "12345";
 	
 	@Test
@@ -47,5 +47,22 @@ public class LoginTest {
 		
 		assertEquals(true,credenciales.acceso(USER, PASSWORD),"Prueba  debe admitir Credenciales");
 	}
-
+	
+	@Test
+	@DisplayName("input- Contraseña elimina los espacios en blanco al final.")
+	void CasoDePruebaEliminaEspaciosEnBlanco(){
+		
+		var credenciales = new Login(USER, PASSWORD);
+		
+		assertEquals(true,credenciales.acceso(USER + " ", PASSWORD + " "),"elimina los espacios en blanco");
+	}
+	
+	@Test
+	@DisplayName("input- Contraseña elimina los espacios en blanco al inicio")
+	void CasoDePruebaEliminaEspaciosEnBlancoInicio(){
+		
+		var credenciales = new Login(USER, PASSWORD);
+		
+		assertEquals(true,credenciales.acceso(" " + USER, PASSWORD),"elimina los espacios en blanco");
+	}
 }
