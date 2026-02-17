@@ -35,7 +35,7 @@ public class loginServlet extends HttpServlet {
 			out.println("<!Doctype html>");
 			out.println("<html>");
 			out.println("<head>");
-			out.println("<meta charset = \"UTF-O\">");
+			out.println("<meta charset = \"UTF-8\">");
 			out.println("<title>Login</title>");
 			out.println("</head>");
 			out.println("<body>");
@@ -47,7 +47,7 @@ public class loginServlet extends HttpServlet {
 		}else {
 			getServletContext().getRequestDispatcher("/login.jsp").forward(request, response);// devuelve ruta absoluta
 		}
-		// response.getWriter().append("Served at: ").append(request.getContextPath());
+		
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
@@ -63,20 +63,20 @@ public class loginServlet extends HttpServlet {
 		boolean login = credenciales.inicioSession(user, password);
 
 
-		if(login== false)errores.put("isFalse", "Crededenciales incorrectas, vuelva a intentarlo");
+		if(!login)errores.put("isTrue", "Crededenciales incorrectas, vuelva a intentarlo");
 		
 		if(errores.isEmpty()) {
 			HttpSession session = request.getSession();
-			session.setAttribute("usuario", user);
+			session.setAttribute("usuario", user);//Guarda atributo en la session de usuario.
 
-			response.sendRedirect("loginServlet.html");
+			response.sendRedirect("loginServlet.html");//Se realiza una nueva petición. 
 		} else {
 		
-			request.setAttribute("errores", errores);
-			request.getRequestDispatcher("/login.jsp").forward(request, response);// devuelve ruta relativa
+			request.setAttribute("errores", errores);// Guarda el atributo solo durante la peticion actual
+			request.getRequestDispatcher("/login.jsp").forward(request, response);// solicitud intermamente dentro del servidor, No cambia la URL
 		}
 
-		doGet(request, response);
+		
 		
 		
 	}
