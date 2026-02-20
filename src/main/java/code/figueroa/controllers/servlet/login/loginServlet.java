@@ -1,4 +1,4 @@
-package code.figueroa.controllers.login;
+package code.figueroa.controllers.servlet.login;
 
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
