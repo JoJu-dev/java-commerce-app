@@ -2,7 +2,7 @@ package code.figueroa.services.login;
 
 import jakarta.servlet.http.HttpServletRequest;
 
-public interface LoginSesvices {
+public interface LoginServices {
 
 	boolean inicioSession(String user, String pass);
 	

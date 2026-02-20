@@ -8,7 +8,7 @@ import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 import code.figueroa.services.login.LoginServicesImpl;
-import code.figueroa.services.login.LoginSesvices;
+import code.figueroa.services.login.LoginServices;
 
 /**
  * Servlet implementation class LogoutServlet
@@ -28,7 +28,7 @@ public class LogoutServlet extends HttpServlet {
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		LoginSesvices cerrarSesvices = new LoginServicesImpl();
+		LoginServices cerrarSesvices = new LoginServicesImpl();
 		cerrarSesvices.outSession(request, "usuario");
 		
 			response.sendRedirect(request.getContextPath()+"/login.jsp");

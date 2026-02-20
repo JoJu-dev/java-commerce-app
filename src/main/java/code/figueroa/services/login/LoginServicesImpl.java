@@ -6,7 +6,7 @@ import code.figueroa.models.login.Login;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
 
-public class LoginServicesImpl implements LoginSesvices {
+public class LoginServicesImpl implements LoginServices {
 	private static final String USER = "prueba";
 	private static final String PASSWORD = "usuario";
 	
