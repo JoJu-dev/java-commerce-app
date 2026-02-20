@@ -8,12 +8,11 @@ import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.util.HashMap;
 import java.util.Map;
 
+import code.figueroa.services.login.LoginServices;
 import code.figueroa.services.login.LoginServicesImpl;
-import code.figueroa.services.login.LoginSesvices;
 
 /**
  * Servlet implementation class loginServlet
@@ -24,28 +23,15 @@ public class loginServlet extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-
-		LoginSesvices sessionServices = new LoginServicesImpl();
+		LoginServices sessionServices = new LoginServicesImpl();
 		var nombreSession = sessionServices.getSessionUserName(request,"usuario");
 		
-		if((nombreSession != null) && (!nombreSession.isBlank())) {
-		response.setContentType("text/html;Charset=UTF-8");		
-		try (PrintWriter out = response.getWriter()) {
-
-			out.println("<!Doctype html>");
-			out.println("<html>");
-			out.println("<head>");
-			out.println("<meta charset = \"UTF-8\">");
-			out.println("<title>Login</title>");
-			out.println("</head>");
-			out.println("<body>");
-			out.print("<h1>Bienvenidos<h1>");
-			out.print("<h1 ><a href='" + request.getContextPath() +"/logout'>Cerrar Session</a><h1>");
-			out.println("</body>");
-			out.println("</html>");
-		}
+		if((nombreSession != null) && !nombreSession.isBlank()) {
+		    getServletContext().getRequestDispatcher("/WEB-INF/Bienvenidos.jsp").forward(request, response);
+			
 		}else {
-			getServletContext().getRequestDispatcher("/login.jsp").forward(request, response);// devuelve ruta absoluta
+			//getServletContext().getRequestDispatcher("/login.jsp").forward(request, response);// devuelve ruta absoluta
+			response.sendRedirect("login.jsp");//Se realiza una nueva petición.
 		}
 		
 	}
@@ -59,7 +45,7 @@ public class loginServlet extends HttpServlet {
 		Map<String,String> errores = new HashMap<>();
 		
 
-		LoginSesvices credenciales = new LoginServicesImpl();
+		LoginServices credenciales = new LoginServicesImpl();
 		boolean login = credenciales.inicioSession(user, password);
 
 
