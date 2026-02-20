@@ -16,7 +16,7 @@
         <span class="navbar-brand">
             Bienvenido, <strong>Juan Pérez</strong>
         </span>
-        <button class="btn btn-light">Logout</button>
+        <a href ="logout" class="btn btn-light">Logout</a>
     </div>
 </nav>
 
