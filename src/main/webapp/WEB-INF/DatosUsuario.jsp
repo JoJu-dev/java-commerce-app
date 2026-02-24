@@ -9,7 +9,7 @@
 </head>
 <body>
 <div class="container mt-5">
-    <h2 class="mb-4">Usuarios</h2>
+    <h2 class="mb-4">Panel Administrativo de Usuarios</h2>
 
     <!-- BotÃ³n Crear -->
     <a href="crear" class="btn btn-success mb-3">Crear Nuevo</a>

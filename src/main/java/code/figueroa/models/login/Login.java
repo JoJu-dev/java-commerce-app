@@ -23,11 +23,7 @@ public class Login {
 
 	public boolean acceso(String user, String password) {
 		
-		if(this.getUser().equals(user.replace(" ", "")) && this.getPassword().equals(password.replace(" ", ""))) {
-			return true;
-		}		
-		
-		return false;
+		return this.getUser().equals(user.replace(" ", "")) && this.getPassword().equals(password.replace(" ", ""));
 	}
 	
 	public boolean equals(Object obj) {

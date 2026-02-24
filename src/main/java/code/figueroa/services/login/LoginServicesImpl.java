@@ -2,33 +2,35 @@ package code.figueroa.services.login;
 
 
 
-import code.figueroa.models.login.Login;
+import java.time.LocalDate;
+
+import code.figueroa.models.usuario.Rol;
+import code.figueroa.models.usuario.Usuario;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
 
 public class LoginServicesImpl implements LoginServices {
-	private static final String USER = "prueba";
-	private static final String PASSWORD = "usuario";
 	
+    private Rol roleAdmin = new Rol(2,"Admin","Administrador del sitio");
+	private Usuario logeo = new Usuario("José","Figueroa",LocalDate.of(2000, 1, 5),"JoJu","jose@gmail.com","usuario",roleAdmin);
 	
 	
 	@Override
 	public boolean inicioSession(String user, String pass) {
-		var logeo = new Login(USER,PASSWORD);
 		return logeo.acceso(user,pass);
 	}
 
 
 
 	@Override
-	public String getSessionUserName(HttpServletRequest req, String idSession) {
+	public Usuario getSessionUserName(HttpServletRequest req, String idSession) {
 		//OPTIONAL no se utiliza para sesiones http
 		
 		HttpSession session = req.getSession();
-        String sessionName = null;	
+        Usuario sessionName = null;	
 		if(session != null) {
 			
-		  sessionName = (String) session.getAttribute(idSession); 
+		  sessionName = (Usuario) session.getAttribute(idSession); 
 		}
 	     return sessionName;
 	}
@@ -45,5 +47,9 @@ public class LoginServicesImpl implements LoginServices {
 		
 	}
 	
+	/*Prueva de enviar Usuario*/
+	public Usuario DatosUsuario() {
+		return logeo;
+	}
 	
 }

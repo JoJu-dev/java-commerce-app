@@ -10,7 +10,7 @@ var nombreSession = sessionServices.getSessionUserName(request,"usuario");
 <meta charset="UTF-8">
 <title>Panel Principal</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<script src="js/Bienvenido.js"></script>
+<script src="js/contenido-principal.js"></script>
 <link
 	href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css"
 	rel="stylesheet">
@@ -20,7 +20,7 @@ var nombreSession = sessionServices.getSessionUserName(request,"usuario");
 	<!-- 🔵 NAVBAR SUPERIOR -->
 	<nav class="navbar navbar-dark bg-primary">
 		<div class="container-fluid">
-			<span class="navbar-brand"> Bienvenido, <strong><%=nombreSession%></strong>
+			<span class="navbar-brand"> Bienvenido <strong><%=nombreSession.getNickName()%> ,</strong> Rol <strong><%=nombreSession.getRol().Nombre()%></strong>
 			</span> <a href="logout" class="btn btn-light">Logout</a>
 		</div>
 	</nav>

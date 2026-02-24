@@ -27,7 +27,7 @@ public class DatosUsusarioServlet extends HttpServlet {
 		LoginServices session = new LoginServicesImpl();
 		var isSession = session.getSessionUserName(request, "usuario");
 		
-		if(isSession != null && !isSession.isBlank()) {
+		if(isSession != null) {
 			
 			getServletContext().getRequestDispatcher("/WEB-INF/DatosUsuario.jsp").forward(request, response);
 			//getServletContext().getRequestDispatcher("/WEB-INF/Bienvenidos.jsp").forward(request, response);
