@@ -11,6 +11,7 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
+import code.figueroa.models.usuario.Usuario;
 import code.figueroa.services.login.LoginServices;
 import code.figueroa.services.login.LoginServicesImpl;
 
@@ -26,7 +27,7 @@ public class loginServlet extends HttpServlet {
 		LoginServices sessionServices = new LoginServicesImpl();
 		var nombreSession = sessionServices.getSessionUserName(request,"usuario");
 		
-		if((nombreSession != null) && !nombreSession.isBlank()) {
+		if((nombreSession != null) ) {
 		    getServletContext().getRequestDispatcher("/WEB-INF/Bienvenidos.jsp").forward(request, response);
 			
 		}else {
@@ -39,7 +40,7 @@ public class loginServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
-		var user = request.getParameter("user");
+		var user = request.getParameter("email");
 		var password = request.getParameter("password");
 		
 		Map<String,String> errores = new HashMap<>();
@@ -52,8 +53,9 @@ public class loginServlet extends HttpServlet {
 		if(!login)errores.put("isTrue", "Crededenciales incorrectas, vuelva a intentarlo");
 		
 		if(errores.isEmpty()) {
+			Usuario datosUsuario = credenciales.DatosUsuario();
 			HttpSession session = request.getSession();
-			session.setAttribute("usuario", user);//Guarda atributo en la session de usuario.
+			session.setAttribute("usuario", datosUsuario );//Guarda atributo en la session de usuario.
 
 			response.sendRedirect("loginServlet.html");//Se realiza una nueva petición. 
 		} else {

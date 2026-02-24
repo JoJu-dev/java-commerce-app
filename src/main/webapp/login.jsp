@@ -44,11 +44,11 @@ Map<String,String> errores = (Map<String,String>) request.getAttribute("errores"
 						<form action="loginServlet" method="post">
 
 							<div class="mb-3">
-								<label for="user" class="form-label">Usuario</label> 
+								<label for="email" class="form-label">Usuario</label> 
 								
 								<input
-									type="text" class="form-control" id="user" name="user"
-									placeholder="Ingrese su usuario">
+									type="email" class="form-control" id="email" name="email"
+									placeholder="Ingrese Correo Electronico">
 							</div>
 							
 							<div class="mb-3">
