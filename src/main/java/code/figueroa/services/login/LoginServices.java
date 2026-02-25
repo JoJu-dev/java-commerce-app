@@ -10,5 +10,5 @@ public interface LoginServices {
 	Usuario getSessionUserName(HttpServletRequest req, String idSession);
 	
 	void outSession(HttpServletRequest req, String idSession);
-	Usuario DatosUsuario();
+	
 }
