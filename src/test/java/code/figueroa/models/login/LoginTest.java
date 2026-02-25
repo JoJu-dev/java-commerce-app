@@ -13,7 +13,7 @@ public class LoginTest {
 	private String USER = "prueba ";
 	private String PASSWORD = "12345";
 	
-/*	@Test
+	@Test
 	@DisplayName("input- Contraseña y password output contraseña o password incorrecto.")
 	void CasoDePruebaLogin(){
 		
@@ -64,6 +64,6 @@ public class LoginTest {
 		var credenciales = new Login(USER, PASSWORD);
 		
 		assertEquals(true,credenciales.acceso(" " + USER, PASSWORD),"elimina los espacios en blanco");
-	}*/
+	}
 	
 }
