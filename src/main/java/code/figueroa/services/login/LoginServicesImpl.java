@@ -1,23 +1,31 @@
 package code.figueroa.services.login;
 
 
+import java.util.Optional;
 
-import java.time.LocalDate;
-
-import code.figueroa.models.usuario.Rol;
 import code.figueroa.models.usuario.Usuario;
+import code.figueroa.services.user.UserServices;
+import code.figueroa.services.user.UserServicesImpl;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
 
 public class LoginServicesImpl implements LoginServices {
 	
-    private Rol roleAdmin = new Rol(2,"Admin","Administrador del sitio");
-	private Usuario logeo = new Usuario("José","Figueroa",LocalDate.of(2000, 1, 5),"JoJu","jose@gmail.com","usuario",roleAdmin);
-	
-	
+  
 	@Override
-	public boolean inicioSession(String user, String pass) {
-		return logeo.acceso(user,pass);
+	public boolean inicioSession(String correo, String pass) {
+		UserServices userServiece = new UserServicesImpl();
+		Optional<Usuario> user = userServiece.buscarPorCorreo(correo);
+	  
+	  if(user.isPresent()) {	
+	  Usuario usuarioEncontrado = user.get();
+	  Usuario userCredentials = new Usuario(usuarioEncontrado.getNombre(), usuarioEncontrado.getApellido(),usuarioEncontrado.getFechaNacimiento(),
+			  usuarioEncontrado.getNickName(), usuarioEncontrado.getCorreo(), usuarioEncontrado.getPassword(), usuarioEncontrado.getRol());
+	  return userCredentials.acceso(correo,pass);
+	  }
+	  
+	  return false;
+		
 	}
 
 
@@ -46,10 +54,10 @@ public class LoginServicesImpl implements LoginServices {
 		}
 		
 	}
+
+
+
 	
-	/*Prueva de enviar Usuario*/
-	public Usuario DatosUsuario() {
-		return logeo;
-	}
+
 	
 }
