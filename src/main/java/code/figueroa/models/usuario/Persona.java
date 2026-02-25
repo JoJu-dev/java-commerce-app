@@ -18,4 +18,25 @@ public abstract class Persona {
 		this.fechaNacimiento = fechaNacimiento;
 	}
 
+	public String getNombre() {
+		return nombre;
+	}
+
+	
+
+	public String getApellido() {
+		return apellido;
+	}
+
+	
+
+	public LocalDate getFechaNacimiento() {
+		return fechaNacimiento;
+	}
+
+	
+
+	
+	
+	
 }
