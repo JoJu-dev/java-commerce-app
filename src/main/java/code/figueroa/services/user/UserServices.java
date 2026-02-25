@@ -1,0 +1,17 @@
+package code.figueroa.services.user;
+
+
+
+import java.util.List;
+import java.util.Optional;
+
+import code.figueroa.models.usuario.Usuario;
+
+public interface UserServices {
+
+	
+	List<Usuario> listar();
+	
+	Optional<Usuario> buscarPorCorreo(String correo);
+	
+}
