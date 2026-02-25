@@ -10,10 +10,13 @@ import jakarta.servlet.http.HttpSession;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Optional;
 
 import code.figueroa.models.usuario.Usuario;
 import code.figueroa.services.login.LoginServices;
 import code.figueroa.services.login.LoginServicesImpl;
+import code.figueroa.services.user.UserServices;
+import code.figueroa.services.user.UserServicesImpl;
 
 /**
  * Servlet implementation class loginServlet
@@ -53,12 +56,18 @@ public class loginServlet extends HttpServlet {
 		if(!login)errores.put("isTrue", "Crededenciales incorrectas, vuelva a intentarlo");
 		
 		if(errores.isEmpty()) {
-			Usuario datosUsuario = credenciales.DatosUsuario();
+			
+			UserServices usuarioServices = new UserServicesImpl();
+			Optional<Usuario> usuarioCapturado = usuarioServices.buscarPorCorreo(user); 
+			
+			if(usuarioCapturado.isPresent()) {
+				Usuario usuario = usuarioCapturado.get();
 			HttpSession session = request.getSession();
-			session.setAttribute("usuario", datosUsuario );//Guarda atributo en la session de usuario.
+			session.setAttribute("usuario", usuario );//Guarda atributo en la session de usuario.
 
 			response.sendRedirect("loginServlet.html");//Se realiza una nueva petición. 
-		} else {
+			}
+			} else {
 		
 			request.setAttribute("errores", errores);// Guarda el atributo solo durante la peticion actual
 			request.getRequestDispatcher("/login.jsp").forward(request, response);// solicitud intermamente dentro del servidor, No cambia la URL
