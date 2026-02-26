@@ -14,4 +14,5 @@ public interface UserServices {
 	
 	Optional<Usuario> buscarPorCorreo(String correo);
 	
+	void addUsuario(Usuario usuario);
 }
