@@ -30,7 +30,7 @@ public class UsuarioImplTest {
 		UserServices listaUsuario = new UserServicesImpl();
 		List<Usuario> listaUsuarios = listaUsuario.listar();
 		Usuario pepito =  listaUsuarios.get(0);
-		assertEquals("Pepito",pepito.nombre,"Debe de retornar lista de usuarios");
+		assertEquals("Pepito",pepito.getNombre(),"Debe de retornar lista de usuarios");
 	}
 	
 	@Test
