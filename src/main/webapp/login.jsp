@@ -37,9 +37,9 @@ Map<String,String> errores = (Map<String,String>) request.getAttribute("errores"
 						</div>
 
 						<h3 class="text-center mb-4">Iniciar Sesión</h3>
-<%
+							<%
 								if(errores != null && errores.containsKey("isTrue")){
-								out.println("<small class='alert alert-danger py-1 px-2 mt-1 mb-0 small'>"+errores.get("isTrue")+"</small>");
+								out.println("<small id='alertError' class='alert alert-danger py-1 px-2 mt-1 mb-0'>"+errores.get("isTrue")+"</small>");
 								}
 							%>
 						<form action="login" method="post" id="formLogin" novalidate>
@@ -49,15 +49,14 @@ Map<String,String> errores = (Map<String,String>) request.getAttribute("errores"
 								
 								<input
 									type="email" class="form-control" id="email" name="email"
-									placeholder="Ingrese Correo Electronico" required>
+									placeholder="Ingrese Correo Electronico" autocomplete="username" required>
 									<div class="invalid-feedback">Ingrese correo válido</div>
 							</div>
 							
 							<div class="mb-3">
 								<label for="password" class="form-label">Contraseña</label> 
-								<input
-									type="password" class="form-control" id="password"
-									name="password" placeholder="Ingrese su contraseña" required>
+								<input type="password" class="form-control" id="password"
+									name="password" placeholder="Ingrese su contraseña" autocomplete="current-password" required>
 									<div class="invalid-feedback">Ingrese password</div>
 							</div>
 						
