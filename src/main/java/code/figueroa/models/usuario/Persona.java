@@ -4,9 +4,9 @@ import java.time.LocalDate;
 
 public abstract class Persona {
 
-	protected String nombre;
-	protected String apellido;
-	protected LocalDate fechaNacimiento;
+	private String nombre;
+	private String apellido;
+	private LocalDate fechaNacimiento;
 
 	
 	public Persona() {}
