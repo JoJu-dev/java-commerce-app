@@ -1,25 +1,74 @@
 package code.figueroa.models.usuario;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertNotEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.time.LocalDate;
+import java.util.List;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import code.figueroa.services.user.UserServices;
+import code.figueroa.services.user.UserServicesImpl;
+
 public class UsuarioTest {
 
+	private static Rol rolAdmin = new Rol(1, "Admin", "Usuario administrador");	
+	private static LocalDate fecha = LocalDate.of(2000,2, 20);
+	private static Usuario persona = new Usuario("Usuario1","usuarioApellido",fecha,"userAdmin","Prueba@gmail.com","12345",rolAdmin);
 	
+	 
 	@Test
 	@DisplayName("Probar nuevo Usuario")
 	void CrearInstanciaPersona() {
-	Rol rolAdmin = new Rol(1, "Admin", "Usuario administrador");	
-	LocalDate fecha = LocalDate.of(2000,2, 20);
-	Usuario persona = new Usuario("Usuario1","usuarioApellido",fecha,"userAdmin","Prueba@gmail.com","12345",rolAdmin);
 	
 	assertNotNull(persona, "Esta instancia contiene datos");
 	assertTrue(persona instanceof Persona,"Usuario deberia heredar de Persona");
 	}
 	
+	@Test 
+	@DisplayName("Probando credenciales correctas agregando espacio")
+	void CredencianlesCorrectasAgregandoEspacio() {
+		assertFalse( persona.acceso("Prueba@gmail.com ", " 12345"),"Persona deberia de no coincidir con las credenciales");
+	} 
+	
+	@Test 
+	@DisplayName("Probando credenciales incorrectas")
+	void CredencianlesIncorrectas() {
+		assertFalse( persona.acceso("pepi@gmail.com", "qqqqq"),"Persona deberia de no coincidir con las credenciales");
+	}
+	
+	@Test 
+	@DisplayName("Probando credenciales correctas")
+	void CredencianlesCorrectas() {
+		assertTrue( persona.acceso("Prueba@gmail.com", "12345"),"Persona deberia coincidir con las credenciales");
+	}
+	
+	@Test
+	@DisplayName("Prueba de un Usuario de la lista de Registros")
+	void PruebaUsuarioDeListaDeRegistros() {
+		
+		UserServices listaUsuario = new UserServicesImpl();
+		List<Usuario> listadoUsuario = listaUsuario.listar();
+	    Usuario Luis = listadoUsuario.get(1);
+	    
+	    assertEquals("Luis", Luis.getNombre(),"El nombre de usuario debería coincidir");
+	
+	}
+	
+	@Test
+	@DisplayName("Prueba de un Usuario de la lista de Registros")
+	void PruebaUsuarioDeListaDeRegistrosIncorrecto() {
+		
+		UserServices listaUsuario = new UserServicesImpl();
+		List<Usuario> listadoUsuario = listaUsuario.listar();
+	    Usuario Luis = listadoUsuario.get(1);
+	    
+	    assertNotEquals("Pedro", Luis.getNombre(),"El nombre de usuario no debería coincidir");
+	
+	}
 }
