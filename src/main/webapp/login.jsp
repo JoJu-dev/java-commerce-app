@@ -19,6 +19,7 @@ Map<String,String> errores = (Map<String,String>) request.getAttribute("errores"
 
 <!-- CSS propio -->
 <link rel="stylesheet" href="css/login.css">
+
 </head>
 <body class="bg-light">
 
@@ -41,25 +42,27 @@ Map<String,String> errores = (Map<String,String>) request.getAttribute("errores"
 								out.println("<small class='alert alert-danger py-1 px-2 mt-1 mb-0 small'>"+errores.get("isTrue")+"</small>");
 								}
 							%>
-						<form action="loginServlet" method="post">
+						<form action="login" method="post" id="formLogin" novalidate>
 
 							<div class="mb-3">
 								<label for="email" class="form-label">Usuario</label> 
 								
 								<input
 									type="email" class="form-control" id="email" name="email"
-									placeholder="Ingrese Correo Electronico">
+									placeholder="Ingrese Correo Electronico" required>
+									<div class="invalid-feedback">Ingrese correo válido</div>
 							</div>
 							
 							<div class="mb-3">
-								<label for="password" class="form-label">Contraseña</label> <input
+								<label for="password" class="form-label">Contraseña</label> 
+								<input
 									type="password" class="form-control" id="password"
-									name="password" placeholder="Ingrese su contraseña">
+									name="password" placeholder="Ingrese su contraseña" required>
+									<div class="invalid-feedback">Ingrese password</div>
 							</div>
 						
 							<div class="d-grid mb-3">
-								<button type="submit" class="btn btn-primary">Ingresar
-								</button>
+								<button type="submit" class="btn btn-primary">Ingresar</button>
 							</div>
 
 							<div class="text-center">
@@ -75,6 +78,8 @@ Map<String,String> errores = (Map<String,String>) request.getAttribute("errores"
 			</div>
 		</div>
 	</div>
+	<script src="js/validacionesBootstrap.js"></script> 
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 
 </body>
 </html>

@@ -21,7 +21,7 @@ import code.figueroa.services.user.UserServicesImpl;
 /**
  * Servlet implementation class loginServlet
  */
-@WebServlet({ "/loginServlet", "/loginServlet.html" })
+@WebServlet({ "/login", "/loginServlet.html", "/panel" })
 public class loginServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
@@ -65,12 +65,13 @@ public class loginServlet extends HttpServlet {
 			HttpSession session = request.getSession();
 			session.setAttribute("usuario", usuario );//Guarda atributo en la session de usuario.
 
-			response.sendRedirect("loginServlet.html");//Se realiza una nueva petición. 
+			response.sendRedirect("login");//Se realiza una nueva petición. 
 			}
 			} else {
 		
 			request.setAttribute("errores", errores);// Guarda el atributo solo durante la peticion actual
 			request.getRequestDispatcher("/login.jsp").forward(request, response);// solicitud intermamente dentro del servidor, No cambia la URL
+			//response.sendRedirect("login.jsp");
 		}
 
 		
