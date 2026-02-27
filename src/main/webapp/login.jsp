@@ -49,14 +49,14 @@ Map<String,String> errores = (Map<String,String>) request.getAttribute("errores"
 								
 								<input
 									type="email" class="form-control" id="email" name="email"
-									placeholder="Ingrese Correo Electronico" autocomplete="username" required>
+									placeholder="Ingrese Correo Electronico" autocomplete="username" required value="pepi@gmail.com">
 									<div class="invalid-feedback">Ingrese correo válido</div>
 							</div>
 							
 							<div class="mb-3">
 								<label for="password" class="form-label">Contraseña</label> 
 								<input type="password" class="form-control" id="password"
-									name="password" placeholder="Ingrese su contraseña" autocomplete="current-password" required>
+									name="password" placeholder="Ingrese su contraseña" autocomplete="current-password" required value="pepi123">
 									<div class="invalid-feedback">Ingrese password</div>
 							</div>
 						
