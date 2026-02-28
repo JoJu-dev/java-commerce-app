@@ -71,4 +71,16 @@ public class UsuarioTest {
 	    assertNotEquals("Pedro", Luis.getNombre(),"El nombre de usuario no debería coincidir");
 	
 	}
+	
+	@Test 
+	@DisplayName("Agregando registro a lista de usuario")
+	void agregarAlistaUsuario() {
+		 UserServices userServicesImpl = new  UserServicesImpl();
+		  List<Rol> listRol = userServicesImpl.listRol();
+		  Rol accessRol = listRol.get(0);  
+		  Usuario userAdd = new Usuario("name","lastName",fecha,"nickName","email@gmail.com","111111",accessRol);
+		  userServicesImpl.addUsuario(userAdd);
+		  assertEquals("email@gmail.com", userAdd.getCorreo(), "Correo debe de existir en la lista");
+		
+	}
 }
