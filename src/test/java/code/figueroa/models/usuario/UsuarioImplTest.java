@@ -3,7 +3,6 @@ package code.figueroa.models.usuario;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
-
 import java.util.List;
 
 import org.junit.jupiter.api.Test;
@@ -46,5 +45,7 @@ public class UsuarioImplTest {
 		UserServices usuarioServices = new UserServicesImpl();
 	    assertNotEquals("pepi@gmail.com", usuarioServices.buscarPorCorreo("pepi@gmail.com"));
 	}
+	
+
 	
 }
