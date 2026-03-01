@@ -4,10 +4,12 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.time.LocalDate;
 import java.util.List;
+import java.util.Optional;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -80,5 +82,16 @@ public class UsuarioTest {
 		
 	}
 	
-	
+	@Test 
+	@DisplayName("Prueba Eliminando usuario")
+	void EliminandoUsuario() {
+	   Optional<Usuario> user = userServicesImpl.buscarPorCorreo("email@gmail.com");
+	   if(user.isPresent()) {
+		 Usuario getUser =  user.get();
+	   
+		userServicesImpl.DeleteUser("email@gmail.com");
+		assertNotEquals("email@gmail.com", getUser.getCorreo(), "Usuario no existe");
+		assertNull(getUser,"Usuario no existe");
+	   }
+	  }
 }
