@@ -17,6 +17,8 @@ public interface UserServices {
 	
 	void addUsuario(Usuario usuario);
 	
+	void DeleteUser(Usuario u);
+	
 	List<Rol>listRol();
 	
     Optional<Rol> buscarRol(int idRol);

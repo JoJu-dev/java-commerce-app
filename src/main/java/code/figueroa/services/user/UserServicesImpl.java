@@ -41,7 +41,7 @@ public class UserServicesImpl implements UserServices {
 	public List<Usuario> listar() {
 		
 		
-		return  this.UserList;
+		return  UserServicesImpl.UserList;
 	}
 		@Override
 		public Optional<Usuario> buscarPorCorreo(String correo) {
@@ -51,9 +51,15 @@ public class UserServicesImpl implements UserServices {
 		
 		@Override
 		public void addUsuario(Usuario usuario) {
-			this.UserList.add(usuario);		
+			UserServicesImpl.UserList.add(usuario);		
 		}
 		
+		@Override
+		public void DeleteUser(Usuario u) {
+			
+			UserServicesImpl.UserList.remove(u);
+			
+		}
 		public List<Rol> listRol(){
 			return this.listRols;
 		}
@@ -61,5 +67,6 @@ public class UserServicesImpl implements UserServices {
 		public Optional<Rol> buscarRol(int idRol) {
 			return listRols.stream().filter(rol -> rol.IdRol() ==idRol).findAny();
 		}
+		
 
 }
