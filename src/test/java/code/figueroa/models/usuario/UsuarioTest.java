@@ -51,7 +51,6 @@ public class UsuarioTest {
 	@Test
 	@DisplayName("Prueba de un Usuario de la lista de Registros")
 	void PruebaUsuarioDeListaDeRegistros() {
-		
 		UserServices listaUsuario = new UserServicesImpl();
 		List<Usuario> listadoUsuario = listaUsuario.listar();
 	    Usuario Luis = listadoUsuario.get(1);
@@ -63,8 +62,6 @@ public class UsuarioTest {
 	@Test
 	@DisplayName("Prueba de un Usuario de la lista de Registros")
 	void PruebaUsuarioDeListaDeRegistrosIncorrecto() {
-		
-		//UserServices listaUsuario = new UserServicesImpl();
 		List<Usuario> listadoUsuario = userServicesImpl.listar();
 	    Usuario Luis = listadoUsuario.get(1);
 	    
