@@ -28,7 +28,9 @@ public class Rol {
 		return descripcion;
 	}
 
-
+	public boolean equals(Object obj) {
+		return obj instanceof Rol rol && rol.idRol == this.IdRol();
+		}
 	
 	
 	
