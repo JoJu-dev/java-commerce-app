@@ -20,7 +20,7 @@ public class UsuarioTest {
 	private static Rol rolAdmin = new Rol(1, "Admin", "Usuario administrador");	
 	private static LocalDate fecha = LocalDate.of(2000,2, 20);
 	private static Usuario persona = new Usuario("Usuario1","usuarioApellido",fecha,"userAdmin","Prueba@gmail.com","12345",rolAdmin);
-	
+	private static UserServices userServicesImpl = new  UserServicesImpl();
 	 
 	@Test
 	@DisplayName("Probar nuevo Usuario")
@@ -64,8 +64,8 @@ public class UsuarioTest {
 	@DisplayName("Prueba de un Usuario de la lista de Registros")
 	void PruebaUsuarioDeListaDeRegistrosIncorrecto() {
 		
-		UserServices listaUsuario = new UserServicesImpl();
-		List<Usuario> listadoUsuario = listaUsuario.listar();
+		//UserServices listaUsuario = new UserServicesImpl();
+		List<Usuario> listadoUsuario = userServicesImpl.listar();
 	    Usuario Luis = listadoUsuario.get(1);
 	    
 	    assertNotEquals("Pedro", Luis.getNombre(),"El nombre de usuario no debería coincidir");
@@ -75,7 +75,6 @@ public class UsuarioTest {
 	@Test 
 	@DisplayName("Agregando registro a lista de usuario")
 	void agregarAlistaUsuario() {
-		 UserServices userServicesImpl = new  UserServicesImpl();
 		  List<Rol> listRol = userServicesImpl.listRol();
 		  Rol accessRol = listRol.get(0);  
 		  Usuario userAdd = new Usuario("name","lastName",fecha,"nickName","email@gmail.com","111111",accessRol);
@@ -83,4 +82,6 @@ public class UsuarioTest {
 		  assertEquals("email@gmail.com", userAdd.getCorreo(), "Correo debe de existir en la lista");
 		
 	}
+	
+	
 }
