@@ -28,13 +28,21 @@ public abstract class Persona {
 		return apellido;
 	}
 
-	
-
 	public LocalDate getFechaNacimiento() {
 		return fechaNacimiento;
 	}
 
-	
+    public void updateNombre(String nombre) {
+    	this.nombre = nombre;
+    }
+    
+    public void updateApellido(String apellido) {
+    	this.apellido = apellido;
+    }
+    
+    public void updatefechaNacimeitno(LocalDate fNacimiento) {
+    	this.fechaNacimiento = fNacimiento;
+    }
 
 	
 	
