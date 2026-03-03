@@ -17,7 +17,7 @@ public interface UserServices {
 	
 	void addUsuario(Usuario usuario);
 	
-	void DeleteUser(Usuario u);
+	void DeleteUser(String correo);
 	
 	List<Rol>listRol();
 	

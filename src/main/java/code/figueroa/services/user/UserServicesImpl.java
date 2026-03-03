@@ -55,9 +55,12 @@ public class UserServicesImpl implements UserServices {
 		}
 		
 		@Override
-		public void DeleteUser(Usuario u) {
-			
-			UserServicesImpl.UserList.remove(u);
+		public void DeleteUser(String correo) {
+			Optional<Usuario> getUser = buscarPorCorreo(correo);
+	        if(getUser.isPresent()) {
+	        	Usuario user = getUser.get();
+	        	UserServicesImpl.UserList.remove(user);	
+	        }		
 			
 		}
 		public List<Rol> listRol(){
