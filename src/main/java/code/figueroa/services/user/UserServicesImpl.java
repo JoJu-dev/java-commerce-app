@@ -28,12 +28,7 @@ public class UserServicesImpl implements UserServices {
 		UserList.add(new Usuario("Pepito","Alcantara",LocalDate.of(1998, 4, 30),"Pepi","pepi@gmail.com","pepi123",rolAdmin));
 		UserList.add(new Usuario("Luis","Manzanares",LocalDate.of(1986, 2,3), "Wicho", "luis@gmail.com","luis123",rolCliente));
 		UserList.add(new Usuario("Parito","Cantara",LocalDate.of(1998, 4, 30), "Paparito", "parito@gmail.com","parito123",rolUser));
-		UserList.add(new Usuario("Pepito","Alcantara",LocalDate.of(1998, 4, 30), "Pepi", "pepi@gmail.com","pepi123",rolAdmin));
-		UserList.add(new Usuario("Luis","Manzanares",LocalDate.of(1986, 2,3), "Wicho", "luis@gmail.com","luis123",rolCliente));
-		UserList.add(new Usuario("Parito","Cantara",LocalDate.of(1998, 4, 30), "Paparito", "parito@gmail.com","parito123",rolUser));
-		UserList.add(new Usuario("Pepito","Alcantara",LocalDate.of(1998, 4, 30), "Pepi", "pepi@gmail.com","pepi123",rolAdmin));
-		UserList.add(new Usuario("Luis","Manzanares",LocalDate.of(1986, 2,3), "Wicho", "luis@gmail.com","luis123",rolCliente));
-		UserList.add(new Usuario("Parito","Cantara",LocalDate.of(1998, 4, 30), "Paparito", "parito@gmail.com","parito123",rolUser));
+		
 	}
 		}
 	
