@@ -73,8 +73,13 @@ public class Usuario extends Persona {
 		return this.getCorreo().equals(correo) && this.getPassword().equals(password);
 	}
 
+	@Override
 	public boolean equals(Object obj) {
-		return obj instanceof Usuario user && user.correo == this.correo && user.password == this.password;
+		return obj instanceof Usuario user && user.getNombre().equals(this.getNombre()) 
+				&& user.getApellido().equals(this.getApellido()) && user.getFechaNacimiento().equals(this.getFechaNacimiento())
+				&& user.getNickName().equals(this.getNickName()) && user.correo.equals(this.correo) && user.password.equals(this.password)
+				&& user.getRol().equals(this.getRol());
+		
 	}
 
 }
