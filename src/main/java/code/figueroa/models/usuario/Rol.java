@@ -28,8 +28,10 @@ public class Rol {
 		return descripcion;
 	}
 
+	@Override
 	public boolean equals(Object obj) {
-		return obj instanceof Rol rol && rol.idRol == this.IdRol();
+		return obj instanceof Rol rol && rol.idRol == this.IdRol()
+				&& rol.nombre.equals(this.nombre) && rol.descripcion.equals(this.descripcion);
 		}
 	
 	
