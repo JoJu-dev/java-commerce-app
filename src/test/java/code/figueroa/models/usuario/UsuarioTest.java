@@ -94,4 +94,20 @@ public class UsuarioTest {
 		assertNull(getUser,"Usuario no existe");
 	   }
 	  }
+	
+	@Test
+	@DisplayName("Probando método para actualizar services")
+	void pruebaMétodoActializar() {
+		var Actualizado="UsuarioActualizado";
+		assertNotEquals(Actualizado, persona.getNombre(),"Usuario debe de ser diferente");
+		
+		
+		Optional<Usuario> getUser = userServicesImpl.buscarPorCorreo(persona.getCorreo());
+		if(getUser.isPresent()) {
+			Usuario user = getUser.get();
+			user.updateNombre(Actualizado);
+			assertEquals(Actualizado, persona.getNombre(),"El usuario actual deberia de ser igual al del test");
+			
+		}
+	}
 }
