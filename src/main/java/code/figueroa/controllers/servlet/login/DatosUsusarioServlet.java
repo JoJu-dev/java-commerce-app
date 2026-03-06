@@ -30,7 +30,9 @@ public class DatosUsusarioServlet extends HttpServlet {
 		if(isSession != null) {
 			getServletContext().getRequestDispatcher("/WEB-INF/DatosUsuario.jsp").forward(request, response);
 			
-		}
+		}else {
+			 response.sendRedirect(request.getContextPath()+"/login.jsp");
+		 }
 
 	}
 
