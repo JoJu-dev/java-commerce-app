@@ -31,10 +31,9 @@ public class loginServlet extends HttpServlet {
 		var nombreSession = sessionServices.getSessionUserName(request,"usuario");
 		
 		if((nombreSession != null) ) {
-		    getServletContext().getRequestDispatcher("/WEB-INF/Bienvenidos.jsp").forward(request, response);
+			response.sendRedirect("DatosUsuario");//Se realiza una nueva petición.
 			
 		}else {
-			//getServletContext().getRequestDispatcher("/login.jsp").forward(request, response);// devuelve ruta absoluta
 			response.sendRedirect("login.jsp");//Se realiza una nueva petición.
 		}
 		
