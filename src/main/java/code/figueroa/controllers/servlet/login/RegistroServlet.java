@@ -46,42 +46,43 @@ public class RegistroServlet extends HttpServlet {
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 	
-	  var name = request.getParameter("name");
-	  var lastName = request.getParameter("lastName");
-	  var dateOfBirth = request.getParameter("dateOfBirth");
-	  var nickName = request.getParameter("nickName");
-	  var email = request.getParameter("email");
-	  var password = request.getParameter("password");
-	  var rol =Integer.parseInt(request.getParameter("rol"));
-	  
-	  Map<String, String> errores = new HashMap<>();
-	  
-	  if(name == null && name.isBlank()) errores.put("name","Agrege nombre");
-	  if(lastName == null && lastName.isBlank())errores.put("lastName","Ingrese Apellido");
-	  if(dateOfBirth == null && dateOfBirth.isBlank())errores.put("dateOfBirth", "Seleccione fecha de Nacimiento");
-	  if(nickName == null && nickName.isBlank()) errores.put("nickName","Agrege un nickName (alias)");
-	  if(email == null && email.isBlank()) errores.put("email","Ingrese email");
-	  if(password == null && password.isBlank()) errores.put("password","Agrege password");
-	  if( rol > 2 && rol<=0) errores.put("rol", "Agrege un rol correctamente");
-	  
-	  rol =  switch (rol) {
-		case 1 -> rol = 0;
-		case 2 -> rol =1;
-		case 3 -> rol= 2;
-	    default -> rol;
-	  };
-	  if(errores.isEmpty()) {
-		  UserServices userServicesImpl = new  UserServicesImpl();
-		  List<Rol> listRol = userServicesImpl.listRol();
-		  Rol accessRol = listRol.get(rol);  
-		  LocalDate fechaNacimiento = LocalDate.parse(dateOfBirth);
+		System.out.println("Actualizar en registrar");
+		  var name = request.getParameter("name");
+		  var lastName = request.getParameter("lastName");
+		  var dateOfBirth = request.getParameter("dateOfBirth");
+		  var nickName = request.getParameter("nickName");
+		  var email = request.getParameter("email");
+		  var password = request.getParameter("password");
+		  var rol =Integer.parseInt(request.getParameter("rol"));
 		  
-		  Usuario userAdd = new Usuario(name,lastName,fechaNacimiento,nickName,email,password,accessRol);
+		  Map<String, String> errores = new HashMap<>();
 		  
-		  userServicesImpl.addUsuario(userAdd);
-	  }
-	  
-	  response.sendRedirect("login");  
+		  if(name == null && name.isBlank()) errores.put("name","Agrege nombre");
+		  if(lastName == null && lastName.isBlank())errores.put("lastName","Ingrese Apellido");
+		  if(dateOfBirth == null && dateOfBirth.isBlank())errores.put("dateOfBirth", "Seleccione fecha de Nacimiento");
+		  if(nickName == null && nickName.isBlank()) errores.put("nickName","Agrege un nickName (alias)");
+		  if(email == null && email.isBlank()) errores.put("email","Ingrese email");
+		  if(password == null && password.isBlank()) errores.put("password","Agrege password");
+		  if( rol > 2 && rol<=0) errores.put("rol", "Agrege un rol correctamente");
+		  
+		  rol =  switch (rol) {
+			case 1 -> rol = 0;
+			case 2 -> rol =1;
+			case 3 -> rol= 2;
+		    default -> rol;
+		  };
+		  if(errores.isEmpty()) {
+			UserServices userServicesImpl = new  UserServicesImpl();
+			  List<Rol> listRol = userServicesImpl.listRol();
+			  Rol accessRol = listRol.get(rol);  
+			  LocalDate fechaNacimiento = LocalDate.parse(dateOfBirth);
+			  
+			  Usuario userAdd = new Usuario(name,lastName,fechaNacimiento,nickName,email,password,accessRol);
+			  
+			  userServicesImpl.addUsuario(userAdd);
+		  }
+		  response.sendRedirect("DatosUsuario");
+ 
 	}
 
 }
