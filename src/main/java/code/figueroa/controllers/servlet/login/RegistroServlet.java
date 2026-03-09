@@ -35,7 +35,7 @@ public class RegistroServlet extends HttpServlet {
 		var isSession = session.getSessionUserName(request,"usuario");
 		
 		if(isSession != null) {
-			getServletContext().getRequestDispatcher("/WEB-INF/Registro.jsp").forward(request, response);
+			getServletContext().getRequestDispatcher("/WEB-INF/views/usuarios/Registro.jsp").forward(request, response);
 			
 		}else {
 			response.sendRedirect(request.getContextPath()+"/login.jsp");
