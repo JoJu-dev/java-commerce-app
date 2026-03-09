@@ -42,7 +42,7 @@ public class UpdateUserServlet extends HttpServlet {
 		 request.setAttribute("Usuario", getUser.get());
 		 }
 		 
-		 request.getRequestDispatcher("/WEB-INF/Editar.jsp").forward(request, response);
+		 request.getRequestDispatcher("/WEB-INF/views/usuarios/Editar.jsp").forward(request, response);
 	    }else {
 			 response.sendRedirect(request.getContextPath()+"/login.jsp");
 		 }
