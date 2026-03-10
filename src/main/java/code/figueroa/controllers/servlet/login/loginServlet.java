@@ -31,7 +31,7 @@ public class loginServlet extends HttpServlet {
 		var nombreSession = sessionServices.getSessionUserName(request,"usuario");
 		
 		if((nombreSession != null) ) {
-			response.sendRedirect("DatosUsuario");//Se realiza una nueva petición.
+			response.sendRedirect("DashboardServlet");//Se realiza una nueva petición.
 			
 		}else {
 			response.sendRedirect("login.jsp");//Se realiza una nueva petición.
