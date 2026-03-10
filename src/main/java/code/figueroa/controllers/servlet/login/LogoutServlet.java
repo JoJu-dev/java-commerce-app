@@ -29,8 +29,8 @@ public class LogoutServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		LoginServices cerrarSesvices = new LoginServicesImpl();
-		cerrarSesvices.outSession(request, "usuario");
-		
+		//cerrarSesvices.outSession(request, "usuario");
+		  request.getSession().invalidate();
 			response.sendRedirect(request.getContextPath()+"/login.jsp");
 	}
 
