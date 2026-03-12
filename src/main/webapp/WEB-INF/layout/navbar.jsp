@@ -20,11 +20,11 @@
     <div class="collapse navbar-collapse" id="navbarNav">
       <ul class="navbar-nav">
         <li class="nav-item">
-          <a class="nav-link" href="DatosUsuario">Usuarios</a>
+          <a class="nav-link" href="<%=request.getContextPath() %>/Usuario/DatosUsuario">Usuarios</a>
         </li>
       </ul>
     </div>
-     <a href="logout" class="btn btn-light my-2 my-sm-0">Logout</a>
+     <a href="<%=request.getContextPath() %>/logout" class="btn btn-light my-2 my-sm-0">Logout</a>
   </div>
 </nav>
 </body>

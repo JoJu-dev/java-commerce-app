@@ -18,7 +18,7 @@ Map<String,String> errores = (Map<String,String>) request.getAttribute("errores"
 	crossorigin="anonymous">
 
 <!-- CSS propio -->
-<link rel="stylesheet" href="css/login.css">
+<link rel="stylesheet" href="assets/css/login.css">
 
 </head>
 <body class="bg-light">
@@ -32,7 +32,7 @@ Map<String,String> errores = (Map<String,String>) request.getAttribute("errores"
 
 						<!-- LOGO -->
 						<div class="text-center mb-3">
-							<img src="img/LogoWhite.png" alt="Logo" class="img-fluid"
+							<img src="assets/img/LogoWhite.png" alt="Logo" class="img-fluid"
 								style="max-height: 80px;">
 						</div>
 
@@ -42,7 +42,7 @@ Map<String,String> errores = (Map<String,String>) request.getAttribute("errores"
 								out.println("<small id='alertError' class='alert alert-danger py-1 px-2 mt-1 mb-0'>"+errores.get("isTrue")+"</small>");
 								}
 							%>
-						<form action="login" method="post" id="formLogin" novalidate>
+						<form action="app/login" method="post" id="formLogin" novalidate>
 
 							<div class="mb-3">
 								<label for="email" class="form-label">Usuario</label> 
@@ -77,7 +77,7 @@ Map<String,String> errores = (Map<String,String>) request.getAttribute("errores"
 			</div>
 		</div>
 	</div>
-	<script src="js/validacionesBootstrap.js"></script> 
+	<script src="assets/js/validacionesBootstrap.js"></script> 
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 
 </body>
