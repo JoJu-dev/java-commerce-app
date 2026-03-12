@@ -24,17 +24,12 @@ public class DatosUsusarioServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		
-		LoginServices session = new LoginServicesImpl();
-		var isSession = session.getSessionUserName(request, "usuario");
 		
-		if(isSession != null) {
 			getServletContext().getRequestDispatcher("/WEB-INF/views/usuarios/DatosUsuario.jsp").forward(request, response);
 			
-		}else {
-			 response.sendRedirect(request.getContextPath()+"/login.jsp");
-		 }
+		}
 
-	}
+	
 
 
 }
