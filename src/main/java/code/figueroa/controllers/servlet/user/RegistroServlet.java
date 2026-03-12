@@ -20,7 +20,7 @@ import code.figueroa.services.user.UserServices;
 import code.figueroa.services.user.UserServicesImpl;
 
 
-@WebServlet({"/Registro","/RegistroServlet"})
+@WebServlet({"/Usuario/Registro","/RegistroServlet"})
 public class RegistroServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -81,7 +81,7 @@ public class RegistroServlet extends HttpServlet {
 			  
 			  userServicesImpl.addUsuario(userAdd);
 		  }
-		  response.sendRedirect("DatosUsuario");
+		  response.sendRedirect(request.getContextPath() + "/Usuario/DatosUsuario");
  
 	}
 
