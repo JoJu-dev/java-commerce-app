@@ -21,61 +21,47 @@ import code.figueroa.services.user.UserServicesImpl;
 /**
  * Servlet implementation class loginServlet
  */
-@WebServlet({ "/login", "/loginServlet.html", "/panel" })
+@WebServlet({ "/app/login", "/loginServlet.html", "/panel" })
 public class loginServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-	protected void doGet(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
-		LoginServices sessionServices = new LoginServicesImpl();
-		var nombreSession = sessionServices.getSessionUserName(request,"usuario");
-		
-		if((nombreSession != null) ) {
-			response.sendRedirect("DashboardServlet");//Se realiza una nueva petición.
-			
-		}else {
-			response.sendRedirect("login.jsp");//Se realiza una nueva petición.
-		}
-		
-	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
 		var user = request.getParameter("email");
 		var password = request.getParameter("password");
-		
-		Map<String,String> errores = new HashMap<>();
-		
+
+		Map<String, String> errores = new HashMap<>();
 
 		LoginServices credenciales = new LoginServicesImpl();
 		boolean login = credenciales.inicioSession(user, password);
 
+		if (!login)
+			errores.put("isTrue", "Crededenciales incorrectas, vuelva a intentarlo");
 
-		if(!login)errores.put("isTrue", "Crededenciales incorrectas, vuelva a intentarlo");
-		
-		if(errores.isEmpty()) {
-			
+		if (errores.isEmpty()) {
+
 			UserServices usuarioServices = new UserServicesImpl();
-			Optional<Usuario> usuarioCapturado = usuarioServices.buscarPorCorreo(user); 
-			
-			if(usuarioCapturado.isPresent()) {
-				Usuario usuario = usuarioCapturado.get();
-			HttpSession session = request.getSession();
-			session.setAttribute("usuario", usuario );//Guarda atributo en la session de usuario.
+			Optional<Usuario> usuarioCapturado = usuarioServices.buscarPorCorreo(user);
 
-			response.sendRedirect("login");//Se realiza una nueva petición. 
+			if (usuarioCapturado.isPresent()) {
+
+				Usuario usuario = usuarioCapturado.get();
+
+				HttpSession session = request.getSession();
+				session.setAttribute("usuario", usuario);// Guarda atributo en la session de usuario.
+
+				response.sendRedirect(request.getContextPath() + "/DashboardServlet");// Se realiza una nueva petición.
 			}
-			} else {
-		
+		} else {
+
 			request.setAttribute("errores", errores);// Guarda el atributo solo durante la peticion actual
-			request.getRequestDispatcher("/login.jsp").forward(request, response);// solicitud intermamente dentro del servidor, No cambia la URL
-			//response.sendRedirect("login.jsp");
+			request.getRequestDispatcher("/login.jsp").forward(request, response);// solicitud intermamente dentro del
+																					
+			
 		}
 
-		
-		
-		
 	}
 
 }
