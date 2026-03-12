@@ -31,22 +31,14 @@ public class RegistroServlet extends HttpServlet {
     }
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 	
-		LoginServices session = new LoginServicesImpl();
-		var isSession = session.getSessionUserName(request,"usuario");
-		
-		if(isSession != null) {
 			getServletContext().getRequestDispatcher("/WEB-INF/views/usuarios/Registro.jsp").forward(request, response);
 			
-		}else {
-			response.sendRedirect(request.getContextPath()+"/login.jsp");
-		}
 		
 	}
 	
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 	
-		System.out.println("Actualizar en registrar");
 		  var name = request.getParameter("name");
 		  var lastName = request.getParameter("lastName");
 		  var dateOfBirth = request.getParameter("dateOfBirth");
