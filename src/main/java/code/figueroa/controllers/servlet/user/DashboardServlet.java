@@ -25,21 +25,12 @@ public class DashboardServlet extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 	
-		LoginServices session = new LoginServicesImpl();
-	    var isSession = session.getSessionUserName(request, "usuario");
-		int numeroUsuarios = NumeroUsuariosListener.obtenerNumeroUsuarios();
 		
-		if(isSession != null) {
+		int numeroUsuarios = NumeroUsuariosListener.obtenerNumeroUsuarios();
+	
 			request.setAttribute("nUsuarios", numeroUsuarios);
-			
 			request.getRequestDispatcher("/Dashboard.jsp").forward(request, response);
 			
-			
-		}else {
-			 response.sendRedirect(request.getContextPath()+"/login.jsp");
-		 }
-	
-		
-	}
+		}
 
 }
