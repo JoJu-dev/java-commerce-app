@@ -32,20 +32,14 @@ public class UpdateUserServlet extends HttpServlet {
 			throws ServletException, IOException {
 
 		 var email = request.getParameter("email");
-         		
-		 LoginServices session = new LoginServicesImpl();
-		 var isSession = session.getSessionUserName(request,"usuario");
-			
-	    if(isSession != null) {
+         
 		 Optional<Usuario> getUser =userImpl.buscarPorCorreo(email);
 		 if(getUser.isPresent()) {
 		 request.setAttribute("Usuario", getUser.get());
 		 }
 		 
 		 request.getRequestDispatcher("/WEB-INF/views/usuarios/Editar.jsp").forward(request, response);
-	    }else {
-			 response.sendRedirect(request.getContextPath()+"/login.jsp");
-		 }
+	    
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
