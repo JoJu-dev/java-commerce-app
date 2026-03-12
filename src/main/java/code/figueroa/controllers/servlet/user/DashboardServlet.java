@@ -11,9 +11,10 @@ import code.figueroa.listener.NumeroUsuariosListener;
 import code.figueroa.services.login.LoginServices;
 import code.figueroa.services.login.LoginServicesImpl;
 
+
 @WebServlet("/DashboardServlet")
 public class DashboardServlet extends HttpServlet {
-	private static final long serialVersionUID = 1L;
+	
        
   
     public DashboardServlet() {
@@ -25,7 +26,7 @@ public class DashboardServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 	
 		LoginServices session = new LoginServicesImpl();
-		var isSession = session.getSessionUserName(request, "usuario");
+	    var isSession = session.getSessionUserName(request, "usuario");
 		int numeroUsuarios = NumeroUsuariosListener.obtenerNumeroUsuarios();
 		
 		if(isSession != null) {
