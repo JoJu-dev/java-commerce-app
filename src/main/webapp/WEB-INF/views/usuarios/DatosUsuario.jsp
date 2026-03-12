@@ -20,7 +20,7 @@ List<Usuario> listaUsuario = usuarioList.listar();
 <body>
 	<div class="container mt-5">
 		<h2 class="mb-4">Panel Administrativo de Usuarios</h2>
-		<a href="Registro" name="accion" value="registrar"
+		<a href="<%=request.getContextPath()%>/Usuario/Registro" name="accion" value="registrar"
 			class="btn btn-success mb-3">Crear Nuevo</a>
 
 
@@ -59,13 +59,13 @@ List<Usuario> listaUsuario = usuarioList.listar();
 										</span></td>
 										<td class="text-center">
 											<div class="d-flex justify-content-center gap-2">
-												<form action="Actualizar" method="GET" class="m-0">
+												<form action="<%=request.getContextPath() %>/Usuario/Actualizar" method="GET" class="m-0">
 													<input type="hidden" name="email"
 														value="<%=u.getCorreo()%>">
 													<button type="submit" class="btn btn-primary btn-sm"
 														name="accion" value="editar">Editar</button>
 												</form>
-												<form action="Delete" method="POST" class="m-0">
+												<form action="<%=request.getContextPath() %>/Usuario/Delete" method="POST" class="m-0">
 													<input type="hidden" name="email"
 														value="<%=u.getCorreo()%>">
 													<button type="submit" class="btn btn-danger btn-sm"
