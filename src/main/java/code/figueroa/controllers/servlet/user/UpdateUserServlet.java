@@ -19,7 +19,7 @@ import code.figueroa.services.login.LoginServicesImpl;
 import code.figueroa.services.user.UserServices;
 import code.figueroa.services.user.UserServicesImpl;
 
-@WebServlet({ "/Actualizar", "/UpdateUserServlet" })
+@WebServlet({ "/Usuario/Actualizar", "/UpdateUserServlet" })
 public class UpdateUserServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private static final UserServices userImpl = new UserServicesImpl();
@@ -123,7 +123,7 @@ public class UpdateUserServlet extends HttpServlet {
             }
 		 }
                    
-         	 response.sendRedirect("DatosUsuario");
+         	 response.sendRedirect(request.getContextPath() + "/Usuario/DatosUsuario");
 
 	}
 }
