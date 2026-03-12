@@ -10,7 +10,7 @@ import java.io.IOException;
 import code.figueroa.services.login.LoginServices;
 import code.figueroa.services.login.LoginServicesImpl;
 
-@WebServlet({"/DatosUsuario", "/DatosUsuario.html"})
+@WebServlet({"/Usuario/DatosUsuario", "/DatosUsuario.html"})
 public class DatosUsusarioServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
