@@ -10,19 +10,12 @@ import java.io.IOException;
 import code.figueroa.services.login.LoginServicesImpl;
 import code.figueroa.services.login.LoginServices;
 
-/**
- * Servlet implementation class LogoutServlet
- */
 @WebServlet("/logout")
 public class LogoutServlet extends HttpServlet {
-	private static final long serialVersionUID = 1L;
-       
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
+	
     public LogoutServlet() {
         super();
-        // TODO Auto-generated constructor stub
+      
     }
 
 	
@@ -31,7 +24,8 @@ public class LogoutServlet extends HttpServlet {
 		LoginServices cerrarSesvices = new LoginServicesImpl();
 		//cerrarSesvices.outSession(request, "usuario");
 		  request.getSession().invalidate();
-			response.sendRedirect(request.getContextPath()+"/login.jsp");
+		  response.sendRedirect("login.jsp");
+
 	}
 
 
