@@ -11,7 +11,7 @@ import code.figueroa.services.user.UserServices;
 import code.figueroa.services.user.UserServicesImpl;
 
 
-@WebServlet({"/Delete","/DeleteUserServlet"})
+@WebServlet({"/Usuario/Delete","/DeleteUserServlet"})
 public class DeleteUserServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private static final UserServices userImpl = new UserServicesImpl();
@@ -33,7 +33,7 @@ public class DeleteUserServlet extends HttpServlet {
 		
 			request.setAttribute("UserEmail", email);
 	        userImpl.DeleteUser(email);
-	        response.sendRedirect("DatosUsuario");
+	        response.sendRedirect(request.getContextPath()+ "/Usuario/DatosUsuario");
 	}
 
 }
